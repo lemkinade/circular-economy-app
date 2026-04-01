@@ -12,7 +12,7 @@ A PostgreSQL database schema designed for a local repair matchmaking service. Th
 * `app.py`: The main database setup script. It establishes the connection, drops existing tables to ensure a clean state, creates the 7 required tables (Users, Categories, Repairers, RepairerSkills, ServiceRequests, Appointments, Reviews), and populates them with sample test data.
 * `queries.py`: The query execution script. It runs specific SQL queries (like calculating the total KG of landfill saved and finding 5-star reviews) to demonstrate the database's analytical capabilities.
 
-## Database Schema
+## Entity-Relationship Diagram
 
 ![Repair Matchmaker ER Diagram](assets/erd.png)
 
