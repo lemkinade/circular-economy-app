@@ -18,11 +18,11 @@ Below is the Entity-Relationship (ER) diagram for the Repair Matchmaker database
 
 ```mermaid
 erDiagram
-    users ||--o{ servicerequests : creates
-    categories ||--o{ servicerequests : categorizes
-    categories ||--o{ repairerskills : defines
-    repairers ||--o{ repairerskills : possesses
-    repairers ||--o{ servicerequests : fulfills
+    users ||--o{ servicerequests : "creates"
+    categories ||--o{ servicerequests : "categorizes"
+    categories ||--o{ repairerskills : "defines"
+    repairers ||--o{ repairerskills : "possesses"
+    repairers ||--o{ servicerequests : "fulfills"
 
     users {
         int userid PK
