@@ -76,19 +76,43 @@ def setup_database():
         );
     ''')
 
-    # Insert sample data to test with
+# Insert complete sample data to test with
     cursor.execute('''
+        -- 1. Insert Users
         INSERT INTO Users (FullName, Email, City, ZipCode, DateJoined) 
         VALUES ('Alice Johnson', 'alice.j@email.com', 'Springfield', '62704', '2023-01-15'),
                ('Bob Smith', 'bob.smith@email.com', 'Shelbyville', '62565', '2023-02-10');
                
+        -- 2. Insert Categories
         INSERT INTO Categories (CategoryName, AvgLandfillSaved_KG) 
         VALUES ('Electronics', 0.5),
                ('Furniture', 15.0);
                
+        -- 3. Insert Repairers
         INSERT INTO Repairers (BusinessName, ContactEmail, City, Bio) 
         VALUES ('Tech Fix Pro', 'contact@techfix.com', 'Springfield', 'Specializing in laptops and phones.'),
                ('Woodwork Wizards', 'info@woodwizards.com', 'Shelbyville', 'Restoring antique furniture.');
+
+        -- 4. Insert Repairer Skills (Linking Repairers to Categories with Hourly Rates)
+        INSERT INTO RepairerSkills (RepairerID, CategoryID, HourlyRate)
+        VALUES (1, 1, 45.00), -- Tech Fix Pro fixes Electronics for $45/hr
+               (2, 2, 60.00); -- Woodwork Wizards fixes Furniture for $60/hr
+
+        -- 5. Insert Service Requests (Broken items reported by users)
+        INSERT INTO ServiceRequests (UserID, CategoryID, ItemDescription, RequestStatus, RequestDate)
+        VALUES (1, 1, 'Laptop screen flickering', 'Completed', '2023-03-01 10:00:00'),
+               (2, 2, 'Antique dining chair broken leg', 'Completed', '2023-03-05 14:30:00'),
+               (1, 1, 'Smartphone battery won''t hold charge', 'Pending', '2023-04-10 09:15:00');
+
+        -- 6. Insert Appointments 
+        INSERT INTO Appointments (RequestID, RepairerID, ApptDate, ApptStatus)
+        VALUES (1, 1, '2023-03-02 11:00:00', 'Completed'),
+               (2, 2, '2023-03-06 15:00:00', 'Completed');
+
+        -- 7. Insert Reviews (Alice leaves a 5-star review, Bob leaves a 4-star)
+        INSERT INTO Reviews (ApptID, Rating, Comment, ReviewDate)
+        VALUES (1, 5, 'Fast and incredibly helpful! Screen looks brand new.', '2023-03-03 09:00:00'),
+               (2, 4, 'Solid woodwork, but took a bit longer than expected.', '2023-03-08 10:00:00');
     ''')
 
     # Query to verify data was inserted
