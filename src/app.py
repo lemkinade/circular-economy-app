@@ -17,7 +17,7 @@ def setup_database():
         DROP TABLE IF EXISTS Reviews, Appointments, ServiceRequests, RepairerSkills, Repairers, Categories, Users CASCADE;
     ''')
 
-    # Create Tables based on your project specification
+    # Create Tables based on project specification
     cursor.execute('''
         CREATE TABLE Users (
             UserID SERIAL PRIMARY KEY,
