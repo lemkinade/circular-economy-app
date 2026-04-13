@@ -44,6 +44,15 @@ Run the initialization script to connect to PostgreSQL, build the tables, establ
 $ python3 app.py
 ```
 
+**5. Execute database queries:**
+This script performs SQL JOINs, aggregations, and filters to extract insights from the PostgreSQL database.
+
+```bash
+
+$ python3 queries.py
+
+```
+
 ## Future Enhancements
 * Implement a Graphical User Interface for easier user interaction.
 * Expand the test dataset to simulate a full production environment.
